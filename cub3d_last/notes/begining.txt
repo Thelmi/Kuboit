@@ -1,0 +1,34 @@
+// initializing mlx using mlx int
+
+// creating a window using mlx_new_window
+
+// we intialize the player view and position
+
+// to initialize player x in tile
+
+(game->pl_x_tile =(game->pl_x * TILE_SIZE) + (TILE_SIZE / 2))
+
+(game->pl_y_tile =(game->pl_y * TILE_SIZE) + (TILE_SIZE / 2))
+
+Notes:  (TILE_SIZE / 2) means it will always start in the middle of the tile
+
+side note: what we are doing here is called x window programming,
+x window programming: graphical system for Unix
+xpm: X PixMap is an image file format used by x window system
+
+mlx_new_image() creates a new image in memory, it retuned void * needed to 
+manipulte it later
+
+mlx_get_data_addr() returns information about the created image,
+allowing a user to modify it later.
+
+bits_per_pixel will be filled with the number of bits needed to represent a pixel color
+
+size_line is the number of bytes used to store one 
+line of the image in memory. This information is needed 
+to move from one line to another in the image.
+
+endian tells you wether the pixel color in the image needs to be stored in:
+little (endian == 0), or big (endian == 1).
+
+important!! it returns the address of the first pixel

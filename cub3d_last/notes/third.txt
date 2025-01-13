@@ -1,0 +1,21 @@
+
+// decision of the textures
+
+if horizental shorter then if its going up then the ray will
+be touching south side of the tile which means we will need the
+south texture (sin > 0)
+
+if its going down tho (sin < 0)
+then it touching the north side of the tile
+
+if the vertical ray is shorter one and it goes right
+(cos > 0) so it touching west which means it needs the west texture
+if it going west then it is touching east then we need east texture
+
+and after the it returns the shorter ray,
+
+now we need to make sure there is no fisheye... so we need to make all arrays
+equal execpt the edges one we need to make them, relevent hight
+
+game ->ray.ray_length_corrected = 
+game->ray.ray_length * cos(game->ray_angle - game->pl_view_ang)

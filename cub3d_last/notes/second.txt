@@ -1,0 +1,107 @@
+
+then we get the pics and get the first address of
+each texture
+
+now we return everything to black in the window
+
+// lets start drawing
+
+first we start by drawing ceil and floor
+
+they will take the whole screen at the begining
+
+total_pixels = Height * Width;
+
+to draw the ceil we send the color for the half of the
+pixels half_pixels = total_pixels / 2
+
+
+// second we initialize ray init_ray_values and init walls
+
+// draw walls
+
+First thing to draw walls we need to get the first ray
+
+\   |   /
+ \  |  /
+  \ | /
+   \|/
+------------
+
+adding the angle of view divided by view_angle + FOV / 2
+
+delta_angle is basically now how 800 rays fits in FOV
+
+rayangle of which is first_ray - index of ray * delta_angle
+
+ray.cos = cos(angle)
+
+ray.sin = sin(angle)
+
+now we are ready to cast the ray yaaaay
+
+we will use DDA
+
+DDA make us check if the next one is a border or not
+
+to know that we have two ways, on way to move very little steps everytime
+
+the second one is the more effient one which you check the every horizental and vertical
+intersection
+
+so first we need to get the first horizental intersection and first vertical intersection
+
+
+game->ray.first_hor_int_c = game->wall.a / fabs(game->ray.sin);
+
+we need to get c but game->wall.a is missing so how we get that one
+
+so 'a' will be in the last tile so by exactly where it is - (the amount of tiles * TILE_SIZE)
+
+
+game->wall.a = game->pl_y_tile - game->pl_y * TILE_SIZE;
+
+when we get game->wall.a and sin is positive
+
+(game->wall.step_y = -1)
+if negative
+	game->wall.step_y = 1
+
+game->wall.a = (game->pl_y + 1) * TILE_SIZE - game->pl_y_tile;
+
+when we get game->wall.a and cos is positive
+game->wall.step_x = -1;
+
+if negative
+	game->wall.step_x = 1;
+
+// to get the next 'c' as you know in case horizental then we need to find
+'a' is equal to the tile size 
+
+to get c = game->ray.c_per_unit_y = TILE_SIZE / fabs(sin(game->ray.ray_angle));
+
+// to get the next 'c' as you know in case vertical then we need to find 'b'
+a is equal to the tile size 
+
+
+// compare grid compare_intersections
+
+so we always check if grid x is valid, map[gridy][gridx] its not a wall or to space
+
+then we compare the compare_intersections
+
+if horizental intersection ==  vertical intersection
+	we update grid y and grid x
+check grid again and if its valid
+	we update both horizental intersection and vertical intersection
+
+if horizental intersection <  vertical intersection
+	we update grid y
+check again if grid is valid
+	we update horizental intersection
+
+
+if horizental intersection > vertical intersection
+	we update grid x
+we check grid again
+	we update vertical intersection

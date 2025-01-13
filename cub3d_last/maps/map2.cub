@@ -1,0 +1,19 @@
+NO ./textures/Brick.xpm
+SO ./textures/Tile.xpm
+WE ./textures/Metal.xpm
+EA ./textures/Wood.xpm
+    
+
+
+
+
+
+F +100, +100, 100
+C       0, 0, 0
+
+ 1111111111
+10001
+10001
+1001              1
+111111           1N1
+                  1
