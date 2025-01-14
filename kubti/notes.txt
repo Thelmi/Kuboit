@@ -1,0 +1,18 @@
+    game.img.img = mlx_new_image(game.mlx_connection, WIDTH, HEIGHT);
+    game.img.adrs = mlx_get_data_addr(game.img.img, &game.img.bitsperpixel,
+                                       &game.img.linelen, &game.img.endian);
+	game->north_texture.img = mlx_xpm_file_to_image(game->mlx_connection,
+			game->no, &width, &height);
+    mlx_clear_window(game->mlx_connection, game->mlx_window);
+    
+
+
+    game->wall.a = game->pl_y_tile - game->pl_y * TILE_SIZE;
+                    g -> p greater than (game->pl_y * TILE_SIZE)
+
+    game->wall.a = (game->pl_y + 1) * TILE_SIZE
+    
+    
+    
+     - game->pl_y_tile  ;
+                    (game->pl_y + 1) * TILE_SIZE greater than game->pl_y_tile
